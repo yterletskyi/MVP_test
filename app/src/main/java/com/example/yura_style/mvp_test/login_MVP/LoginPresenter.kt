@@ -1,26 +1,28 @@
 package com.example.yura_style.mvp_test.login_MVP
 
+import android.util.Log
 import com.example.yura_style.mvp_test.R
 
 class LoginPresenter(private val view: LoginView, private val service: LoginService) {
 
+    private val LOG_TAG = LoginPresenter::class.java.simpleName
+
     fun onLoginClicked() {
-        var username = view.name
+        val username = view.name
         if (username.isEmpty()) {
             view.showNameError(R.string.username_error)
             return
         }
-        var password = view.password
+        val password = view.password
         if (password.isEmpty()) {
             view.showPasswordError(R.string.password_error)
             return
         }
-        var loginSucceeded = service.login(username, password)
+        val loginSucceeded = service.login(username, password)
         if (loginSucceeded) {
             view.startMainActivity()
             return
         }
-        view.startMainActivity()
-        //view.showLoginIncorrectError(R.string.login_failed)
+        view.showLoginIncorrectError(R.string.login_failed)
     }
 }

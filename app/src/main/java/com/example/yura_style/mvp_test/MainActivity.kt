@@ -1,11 +1,12 @@
 package com.example.yura_style.mvp_test
 
-import android.content.Context
-import android.content.Intent
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
 
-class MainActivity(var context: Context) {
+class MainActivity : AppCompatActivity() {
 
-    fun startMainActivity() {
-        context.startActivity(Intent(context, MainActivity::class.java))
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
     }
 }
